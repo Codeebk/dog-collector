@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Dog
+from .forms import FeedingForm
 
 
 class DogCreate(CreateView):
@@ -29,4 +30,9 @@ def dogs_index(request):
 
 def dogs_detail(request, dog_id):
   dog = Dog.objects.get(id=dog_id)
-  return render(request, 'dogs/detail.html', { 'dog': dog })
+ # instantiate FeedingForm to be rendered in the template
+  feeding_form = FeedingForm()
+  return render(request, 'dogs/detail.html', {
+    # pass the dog and feeding_form as context
+    'dog': dog, 'feeding_form': feeding_form
+  })
