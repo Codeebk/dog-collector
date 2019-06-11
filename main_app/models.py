@@ -15,7 +15,7 @@ class Dog(models.Model):
     age = models.IntegerField()
 
 class Feeding(models.Model):
-  date = models.DateField()
+  date = models.DateField('Date to feed your dog')
   meal = models.CharField(
     max_length=1,
     # add the choices field option
